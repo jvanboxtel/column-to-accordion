@@ -1,0 +1,68 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.4.7/css/foundation.min.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  </head>
+  <body>
+      <main>
+        <h1 class="text-center">Column to Accordion</h1>
+        <dl class="accordion accordion__left column small-12 medium-12 large-4" data-accordion="">
+          <dd class="accordion-panel active" data-equalizer-watch="">        
+              <a href="#" class="panel-title panel-title-desktop show-for-large-up">Column 1</a>
+              <a href="#panel1" class="panel-title show-for-medium-down"  aria-selected="true">Column 1</a>
+              <div id="panel1" class="content active" aria-hidden="false">
+                <p>Column 1 Body</p> 
+              </div>  
+          </dd>
+        </dl>
+        <dl class="accordion accordion__middle column small-12 medium-12 large-4" data-accordion="">
+          <dd class="accordion-panel active" data-equalizer-watch="">            
+              <a href="#" class="panel-title panel-title-desktop show-for-large-up">Column 2</a>
+              <a href="#panel2" class="panel-title show-for-medium-down"aria-selected="true">Column 2</a>
+              <div id="panel2" class="content active" aria-hidden="false">
+                <p>Column 2 Body</p> 
+              </div>
+          </dd>
+        </dl>
+        <dl class="accordion accordion__right column small-12 medium-12 large-4" data-accordion="">
+          <dd class="accordion-panel active" data-equalizer-watch="">            
+              <a href="#" class="panel-title panel-title-desktop show-for-large-up">Column 3</a>
+              <a href="#panel3" class="panel-title show-for-medium-down" aria-selected="true">Column 3</a>
+              <div id="panel3" class="content active" aria-hidden="false">
+                <p>Column 3 Body</p> 
+              </div>
+           </dd>   
+        </dl>
+      </main>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.4.7/js/foundation.min.js"></script>
+    <script>$(document).foundation();</script>
+    <script>
+      $(window).load(function(){
+        var id;
+          var mod = function(){
+             if (Modernizr.mq('(max-width: 1024px)')) {
+                $('.accordion .accordion-panel').removeClass('active').attr('aria-hidden', 'true')
+                         .find('.content').removeClass('active').attr('aria-hidden', 'true');
+             } 
+          }
+
+          // Shortcut for $(document).ready()
+          $(function() {
+              // Call on every window resize
+              $(window).resize(function() {
+                clearTimeout(id);
+                id = setTimeout(mod, 500);
+              });
+              // Call once on initial load
+              mod();
+          });
+      });
+    </script>
+  </body>
+</html>
